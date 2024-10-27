@@ -1,0 +1,6 @@
+<h2>Teams</h2>
+<ul>
+  <li *ngFor="let team of teams">{{ team.name }}</li>
+</ul>
+<input #teamName type="text" placeholder="Team Name">
+<button (click)="createTeam(teamName.value)">Add Team</button>
