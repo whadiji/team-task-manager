@@ -1,6 +1,14 @@
-<h2>Teams</h2>
-<ul>
-  <li *ngFor="let team of teams">{{ team.name }}</li>
-</ul>
-<input #teamName type="text" placeholder="Team Name">
-<button (click)="createTeam(teamName.value)">Add Team</button>
+<div>
+    <h2>Team List</h2>
+    <form (submit)="createTeam(teamName.value); teamName.value=''">
+      <input #teamName type="text" placeholder="Enter team name" required />
+      <button type="submit">Add Team</button>
+    </form>
+  
+    <ul>
+      <li *ngFor="let team of teams">
+        {{ team.name }}
+      </li>
+    </ul>
+  </div>
+  

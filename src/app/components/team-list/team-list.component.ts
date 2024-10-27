@@ -11,15 +11,23 @@ export class TeamListComponent implements OnInit {
   constructor(private teamService: TeamService) {}
 
   ngOnInit(): void {
+    this.loadTeams();  // Load teams on initialization
+  }
+
+  loadTeams() {
     this.teamService.getTeams().subscribe(data => {
       this.teams = data;
-    });
+      console.log('Fetched teams:', this.teams);  // Log fetched teams
+    },
+    error => {
+      console.error('Error fetching teams:', error);  // Log any errors
+    }
+  );
   }
 
   createTeam(name: string) {
     this.teamService.createTeam(name).subscribe(() => {
-      this.ngOnInit(); // Refresh the team list
+      this.loadTeams(); // Refresh the team list
     });
   }
 }
-

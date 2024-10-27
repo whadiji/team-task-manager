@@ -6,15 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TeamService {
-  private apiUrl = 'http://localhost:5000/teams';
+  private apiUrl = 'http://127.0.0.1:5000/teams';  // Adjust as necessary
 
   constructor(private http: HttpClient) {}
 
-  getTeams(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  // Fetch teams
+  getTeams(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
+  // Create a new team
   createTeam(name: string): Observable<any> {
-    return this.http.post(this.apiUrl, { name });
+    return this.http.post<any>(this.apiUrl, { name });
   }
 }
