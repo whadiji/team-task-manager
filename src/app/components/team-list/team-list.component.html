@@ -1,14 +1,18 @@
+<h2>Liste des Équipes</h2>
+
+<!-- Formulaire pour ajouter une équipe -->
 <div>
-    <h2>Team List</h2>
-    <form (submit)="createTeam(teamName.value); teamName.value=''">
-      <input #teamName type="text" placeholder="Enter team name" required />
-      <button type="submit">Add Team</button>
-    </form>
-  
-    <ul>
-      <li *ngFor="let team of teams">
-        {{ team.name }}
-      </li>
-    </ul>
-  </div>
-  
+  <input
+    type="text"
+    placeholder="Nom de l'équipe"
+    [(ngModel)]="newTeamName"
+  />
+  <button (click)="addTeam()">Ajouter une équipe</button>
+</div>
+
+<!-- Affichage de la liste des équipes -->
+<ul>
+  <li *ngFor="let team of teams">
+    <a [routerLink]="['/teams', team.id]">{{ team.name }}</a>
+  </li>
+</ul>

@@ -19,4 +19,9 @@ export class TeamService {
   createTeam(name: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { name });
   }
+
+  // Méthode pour récupérer une équipe par son ID
+  getTeamById(teamId: number): Observable<any> {
+      return this.http.get(`${this.apiUrl}/${teamId}`);  // Envoie une requête GET avec l'ID
+  }
 }

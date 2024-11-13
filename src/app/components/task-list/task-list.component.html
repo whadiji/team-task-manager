@@ -1,8 +1,13 @@
-<h3>Tasks</h3>
-<ul>
-  <li *ngFor="let task of tasks">{{ task.title }} - {{ task.description }}</li>
-</ul>
-<input #taskTitle type="text" placeholder="Task Title">
-<input #taskDesc type="text" placeholder="Task Description">
-<button (click)="createTask(taskTitle.value, taskDesc.value)">Add Task</button>
+<div *ngIf="teamId">
+  <h3>Tâches pour l'équipe {{ teamId }}</h3>
+  <ul *ngIf="tasks.length > 0">
+    <li *ngFor="let task of tasks">
+      {{ task.title }} - {{ task.description }}
+    </li>
+  </ul>
 
+  <!-- Formulaire pour créer une nouvelle tâche -->
+  <input #taskTitle placeholder="Titre de la tâche" />
+  <input #taskDescription placeholder="Description de la tâche" />
+  <button (click)="createTask(taskTitle.value, taskDescription.value)">Créer une tâche</button>
+</div>
